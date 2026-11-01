@@ -146,16 +146,15 @@ const S = {
   turnPhone: {en: 'Turn your phone sideways for the full console', fr: 'Tournez le téléphone pour la console complète', es: 'Gira el teléfono para ver la consola completa'},
   docTitle: {en: 'Spindl · a 3.5″ 7,200 rpm hard drive, taken apart', fr: 'Spindl · un disque dur 3,5″ 7 200 tr/min, démonté', es: 'Spindl · un disco duro de 3,5″ y 7200 rpm, desmontado'},
   // ------------------------------------------------------------ the page's header and footer (chrome.js)
-  byline: {en: 'by', fr: 'par', es: 'por'},
   navLabel: {en: 'Menu', fr: 'Menu', es: 'Menú'},
   navAbout: {en: 'About', fr: 'À propos', es: 'Acerca de'},
   navProjects: {en: 'Projects', fr: 'Projets', es: 'Proyectos'},
   ghTitle: {en: 'Spindl on GitHub', fr: 'Spindl sur GitHub', es: 'Spindl en GitHub'},
-  footLicense: {en: 'code MIT', fr: 'code MIT', es: 'código MIT'},
+  footLicense: {en: 'Code under the MIT licence', fr: 'Code sous licence MIT', es: 'Código bajo licencia MIT'},
   footCredit: {
-    en: 'Built with Claude Code (Claude Opus 5.5) · a model of a typical drive, not a specific product',
-    fr: 'Construit avec Claude Code (Claude Opus 5.5) · le modèle d’un disque typique, pas d’un produit précis',
-    es: 'Hecho con Claude Code (Claude Opus 5.5) · el modelo de un disco típico, no de un producto concreto',
+    en: 'A model of a typical drive, not a specific product',
+    fr: 'Le modèle d’un disque typique, pas d’un produit précis',
+    es: 'El modelo de un disco típico, no de un producto concreto',
   },
   footSources: {en: 'Sources', fr: 'Sources', es: 'Fuentes'},
   // ------------------------------------------------------------ the tour's captions

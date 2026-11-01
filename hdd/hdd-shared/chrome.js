@@ -1,5 +1,5 @@
 // The page's own header and footer, in the house style of blok and Uberblok, light to sit with the drive's studio:
-// the name in Instrument Serif on the left with "by storagebits" pointing home, the menu in Inter (About, the
+// the name in Instrument Serif on the left, the menu in Inter (About, the
 // project's card on blok; Projects), the repository's GitHub mark and the flags of the three languages on the right;
 // a one-line footer. The 1600 x 900 stage fits between them (live.js reads the heights).
 import {LANG, LANGS, T} from './i18n.js';
@@ -23,9 +23,6 @@ const CSS = `
 .site-top .sp-bar{height:100%;max-width:1600px;margin:0 auto;padding:0 32px;box-sizing:border-box;display:flex;align-items:center;gap:22px}
 .site-top a{color:inherit;text-decoration:none}
 .site-top .mark{font:400 25px/1 'Instrument Serif',Georgia,serif;letter-spacing:-.005em;white-space:nowrap}
-.site-top .by{font:400 17px/1 'Instrument Serif',Georgia,serif;color:rgba(22,24,27,.56);white-space:nowrap;margin-left:-12px;padding-top:4px}
-.site-top .by b{font-weight:400;color:#ef4a1d}
-.site-top .by:hover{color:#16181b}
 .site-top nav{margin-left:auto;display:flex;align-items:center;gap:22px}
 .site-top ul{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:20px}
 .site-top .menu a{color:rgba(22,24,27,.66)}
@@ -44,7 +41,7 @@ const CSS = `
 .site-foot a{color:rgba(22,24,27,.66);text-decoration:underline;text-decoration-color:rgba(22,24,27,.22);text-underline-offset:3px}
 .site-foot a:hover{color:#16181b;text-decoration-color:#ef4a1d}
 .site-foot .sp-right{margin-left:auto;display:flex;gap:18px}
-@media (max-width:900px){.site-top .by,.site-top .menu .more{display:none}.site-top .sp-bar,.site-foot .sp-bar{padding:0 14px}.site-top nav{gap:14px}}
+@media (max-width:900px){.site-top .menu .more{display:none}.site-top .sp-bar,.site-foot .sp-bar{padding:0 14px}.site-top nav{gap:14px}}
 @media (max-width:600px){.site-top .lang span{display:none}.site-foot .credit{display:none}}
 @media (max-height:520px){.site-foot{display:none}.site-top{height:40px}.site-top .mark{font-size:21px}.site-top .gh{width:26px;height:26px}}
 `;
@@ -58,7 +55,6 @@ export function createChrome() {
   top.className = 'site-top';
   top.innerHTML = `<div class="sp-bar">
     <a class="mark" href="./">Spindl</a>
-    <a class="by" href="${blok('/')}">${T('byline')} storage<b>bits</b></a>
     <nav aria-label="${T('navLabel')}">
       <ul class="menu">
         <li><a href="${blok('/projects/spindl/')}">${T('navAbout')}</a></li>
@@ -75,7 +71,7 @@ export function createChrome() {
   const foot = document.createElement('footer');
   foot.className = 'site-foot';
   foot.innerHTML = `<div class="sp-bar">
-    <span>© 2026 <a href="${blok('/')}">storagebits</a> · ${T('footLicense')}</span>
+    <span>${T('footLicense')}</span>
     <span class="credit">${T('footCredit')}</span>
     <span class="sp-right"><a href="${REPO}/blob/main/hdd/REFERENCES.md">${T('footSources')}</a><a href="${REPO}">GitHub · algotitanhq/spindl</a></span>
   </div>`;
