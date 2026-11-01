@@ -7,7 +7,7 @@ import {
   CAPACITY, G, J, KT, L, LAT_AVG, NCYL, NZ, OMEGA, REV_S, STROKE, SPT_ID, SPT_OD, T_REV, D2R, rateOf, sptOf, sectorAng, segEval, vLin, PHI_ID, PHI_OD, SERVO_WEDGES, FLY_NM, PITCH_NM,
 } from './kin.js';
 import {ACCENT} from './drive.js';
-import {LANG, LANGS, nf, T} from './i18n.js';
+import {nf, T} from './i18n.js';
 
 export const C = {ink: '#16181b', mute: '#868a91', faint: '#c9ccd0', line: '#e1e3e6', panel: 'rgba(249,249,250,.94)', acc: ACCENT, accSoft: 'rgba(239,74,29,.12)', blue: '#2f6fb3'};
 export const VIEWS = ['dessus', 'trois4', 'rasante', 'tete'];
@@ -36,9 +36,9 @@ const CSS = `
 .call span{display:block;font-size:9.4px;font-weight:500;letter-spacing:1.3px;color:${C.mute};text-transform:uppercase;margin-top:2px}
 .cur{position:absolute;left:0;top:0;z-index:50;filter:drop-shadow(0 1px 2px rgba(0,0,0,.3))}
 .ring{position:absolute;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;border:1.5px solid ${C.ink};opacity:0;z-index:49}
-.chip{position:absolute;left:800px;top:30px;transform:translateX(-50%);display:flex;align-items:center;gap:9px;height:28px;padding:0 14px;background:#fff;border:1px solid ${C.line};font-size:11px;font-weight:700;letter-spacing:1.6px;white-space:nowrap}
-.chip i{display:block;width:8px;height:8px;border-radius:50%}
-.cap{position:absolute;left:800px;top:66px;transform:translateX(-50%);font-size:15px;font-weight:500;color:${C.ink};white-space:nowrap;text-align:center}
+.sp-chip{position:absolute;left:800px;top:30px;transform:translateX(-50%);display:flex;align-items:center;gap:9px;height:28px;padding:0 14px;background:#fff;border:1px solid ${C.line};font-size:11px;font-weight:700;letter-spacing:1.6px;white-space:nowrap}
+.sp-chip i{display:block;width:8px;height:8px;border-radius:50%}
+.sp-cap{position:absolute;left:800px;top:66px;transform:translateX(-50%);font-size:15px;font-weight:500;color:${C.ink};white-space:nowrap;text-align:center}
 `;
 const el = (h) => {
   const d = document.createElement('div');
@@ -169,15 +169,6 @@ export function createConsole(app) {
   group(T('grpCover'), COVERS, COVER_LABEL, 720, 'cover:');
   group(T('grpCut'), CUTS, CUT_LABEL, 766, 'cut:');
   group(T('grpView'), VIEWS, VIEW_LABEL, 812, 'view:');
-  // the language switch (the live page wires it; the film hides it)
-  const langBox = add(`<div style="position:absolute;left:1306px;top:662px;width:262px;height:40px"></div>`);
-  langBox.innerHTML = `<div class="cp mu" style="position:absolute;left:10px;top:2px;font-weight:500">${T('grpLang')}</div>`;
-  LANGS.forEach((k, i) => {
-    const b = el(`<div class="tb" data-lang="${k}" style="left:${10 + i * 40}px;top:17px;width:36px">${k.toUpperCase()}</div>`);
-    if (k === LANG) Object.assign(b.style, {background: C.ink, color: '#fff', borderColor: C.ink});
-    langBox.appendChild(b);
-    btn['lang:' + k] = b;
-  });
 
   // ------------------------------------------------------------ subsystems
   add(`<div class="cp mu" style="position:absolute;left:0;right:0;top:822px;text-align:center;font-weight:500">${T('subsHint').replace('<b>', `<span style="color:${C.ink}">`).replace('</b>', '</span>')}</div>`);
@@ -194,8 +185,8 @@ export function createConsole(app) {
   add(`<div class="cp" style="position:absolute;left:0;right:0;top:872px;text-align:center;font-weight:500;color:${C.faint};font-size:9px">${T('hint')}</div>`);
 
   // ------------------------------------------------------------ phase chip and caption
-  const chip = add(`<div class="chip"><i></i><span></span></div>`);
-  const cap = add(`<div class="cap"></div>`);
+  const chip = add(`<div class="sp-chip"><i></i><span></span></div>`);
+  const cap = add(`<div class="sp-cap"></div>`);
 
   // ------------------------------------------------------------ nanometre scale (the dive)
   const nano = add(`<div style="position:absolute;left:968px;top:112px;width:318px;height:318px;opacity:0"></div>`);
@@ -217,7 +208,7 @@ export function createConsole(app) {
     const h = parseFloat(n.style.height || 21);
     return [l + w / 2, t + h / 2];
   };
-  const spots = Object.fromEntries(Object.entries(btn).filter(([k]) => !k.startsWith('lang:')).map(([k, n]) => [k, centre(n)]));
+  const spots = Object.fromEntries(Object.entries(btn).map(([k, n]) => [k, centre(n)]));
   const knobX = (v) => SLD.x + v * SLD.w;
   const pointer = (c) => {
     cur.style.display = c.x < 0 ? 'none' : 'block';
@@ -325,7 +316,6 @@ export function createConsole(app) {
       clock.textContent = `${nf(d.t * 1e3, 3)} ms`;
       clockSub.textContent = s.clockNote || '';
       btn.power.innerHTML = `⏻ &nbsp;${s.powered ? T('powerOff') : T('powerOn')}`;
-      langBox.style.display = s.live || s.showLang ? '' : 'none';
       setBtn(btn.power, s.powered);
       btn.req.style.display = s.live ? 'flex' : 'none';
 

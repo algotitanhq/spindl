@@ -145,6 +145,19 @@ const S = {
   tourOff: {en: '▶ RESUME THE TOUR', fr: '▶ REPRENDRE LA VISITE', es: '▶ REANUDAR LA VISITA'},
   turnPhone: {en: 'Turn your phone sideways for the full console', fr: 'Tournez le téléphone pour la console complète', es: 'Gira el teléfono para ver la consola completa'},
   docTitle: {en: 'Spindl · a 3.5″ 7,200 rpm hard drive, taken apart', fr: 'Spindl · un disque dur 3,5″ 7 200 tr/min, démonté', es: 'Spindl · un disco duro de 3,5″ y 7200 rpm, desmontado'},
+  // ------------------------------------------------------------ the page's header and footer (chrome.js)
+  byline: {en: 'by', fr: 'par', es: 'por'},
+  navLabel: {en: 'Menu', fr: 'Menu', es: 'Menú'},
+  navAbout: {en: 'About', fr: 'À propos', es: 'Acerca de'},
+  navProjects: {en: 'Projects', fr: 'Projets', es: 'Proyectos'},
+  ghTitle: {en: 'Spindl on GitHub', fr: 'Spindl sur GitHub', es: 'Spindl en GitHub'},
+  footLicense: {en: 'code MIT', fr: 'code MIT', es: 'código MIT'},
+  footCredit: {
+    en: 'Built with Claude Code (Claude Opus 5.5) · a model of a typical drive, not a specific product',
+    fr: 'Construit avec Claude Code (Claude Opus 5.5) · le modèle d’un disque typique, pas d’un produit précis',
+    es: 'Hecho con Claude Code (Claude Opus 5.5) · el modelo de un disco típico, no de un producto concreto',
+  },
+  footSources: {en: 'Sources', fr: 'Sources', es: 'Fuentes'},
   // ------------------------------------------------------------ the tour's captions
   cap0: {en: 'Stopped: the heads rest on the ramp, off the platters.', fr: 'À l’arrêt : les têtes reposent sur la rampe, hors des plateaux.', es: 'Parado: los cabezales descansan en la rampa, fuera de los platos.'},
   cap1: {en: 'Spin-up: the spindle reaches 7,200 rpm in 4 seconds.', fr: 'Démarrage : la broche monte à 7 200 tr/min en 4 secondes.', es: 'Arranque: el eje llega a 7200 rpm en 4 segundos.'},

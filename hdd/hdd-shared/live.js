@@ -11,6 +11,7 @@ import {COVERS, createConsole, CUTS, SUBS, VIEWS} from './console.js';
 import {accessOf, blendCam, callouts, camKey, exOf, filmFrame, FOCUS, makeCursor, playK, playText, VIEW_FN} from './film.js';
 import {D2R, driveAt, makePlan, NCYL, OMEGA, T_UP, physToCHS, chsToPhys, PHYS_TOTAL, LBA_PER} from './kin.js';
 import {createStage} from './stage.js';
+import {createChrome} from './chrome.js';
 import {LANG, LANGS, nf, T as tr} from './i18n.js';
 import {DURATION, PLAN, rateAt, tauAt} from './tour.js';
 
@@ -34,7 +35,7 @@ const nearestPlay = (r) => {
 };
 
 const CSS = `
-html,body{background:#ecedef;overflow:hidden}
+html,body{background:#ebecee linear-gradient(#f4f4f5,#ebecee 55%,#e2e3e6) fixed;overflow:hidden}
 #app{position:absolute!important;inset:auto!important;left:0;top:0;width:${W}px;height:${H}px;transform-origin:0 0}
 #gl{touch-action:none;cursor:grab}
 #gl.drag{cursor:grabbing}
@@ -73,9 +74,13 @@ export function runLive() {
   const light = matchMedia('(pointer: coarse)').matches || Math.min(innerWidth, innerHeight) < 700;
   let tier = light ? 2 : 0;
   let scale = 1;
+  // the stage fits between the page's header and footer (chrome.js)
+  const chrome = createChrome();
   const fit = () => {
-    scale = Math.min(innerWidth / W, innerHeight / H);
-    app.style.transform = `translate(${(innerWidth - W * scale) / 2}px, ${(innerHeight - H * scale) / 2}px) scale(${scale})`;
+    const {top, bottom} = chrome.heights();
+    const h = innerHeight - top - bottom;
+    scale = Math.min(innerWidth / W, h / H);
+    app.style.transform = `translate(${(innerWidth - W * scale) / 2}px, ${top + (h - H * scale) / 2}px) scale(${scale})`;
     st.resize(W, H, clamp((devicePixelRatio || 1) * scale, 0.75, TIERS[tier].pr));
   };
   const applyTier = () => {
@@ -232,9 +237,12 @@ export function runLive() {
       Object.assign(off, {az: 0, el: 0, k: 1});
     });
   on('power', () => (powered ? powerOff() : powerOn()));
-  // languages: on the site a cookie (the Worker reads it for /) and the language's own page; from a file, ?lang=
-  for (const k of LANGS)
-    ui.btn['lang:' + k].addEventListener('click', () => {
+  // languages, in the header: on the site a cookie (the Worker reads it for /) and the language's own page; from a
+  // file, ?lang=
+  for (const a of chrome.langLinks)
+    a.addEventListener('click', (e) => {
+      const k = a.dataset.lang;
+      e.preventDefault();
       if (k === LANG) return;
       if (location.protocol === 'file:') {
         const u = new URL(location.href);
@@ -358,7 +366,7 @@ export function runLive() {
         const k = ss(0, 0.8, cyc);
         cursor = {...cursor, x: end.x + (cursor.x - end.x) * k, y: end.y + (cursor.y - end.y) * k};
       }
-      tourOut = filmFrame(st, ui, () => cursor, cyc, {showLang: true});
+      tourOut = filmFrame(st, ui, () => cursor, cyc);
     } else {
       if (T - lastInput > IDLE) startTour();
       const rate = PLAYS[playI];

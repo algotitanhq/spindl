@@ -48,6 +48,7 @@ const font = (file, family, weight) => {
 const FONTS = [
   ...[400, 600, 700].map((w) => font(`@fontsource/jetbrains-mono/files/jetbrains-mono-latin-${w}-normal.woff2`, 'JetBrains Mono', w)),
   font('@fontsource-variable/inter/files/inter-latin-wght-normal.woff2', 'Inter', '100 900'),
+  font('@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2', 'Instrument Serif', 400),
 ].join('\n');
 const KIT_CSS = fs.readFileSync(path.join(ROOT, 'kit/style.css'), 'utf8');
 
