@@ -1,0 +1,14 @@
+node_modules/
+dist/
+teardown-out/
+hdd/teardown-out/
+# study photos of real drives (Aesonlabs, iFixit, Wikimedia): not ours to redistribute; REFERENCES.md links them
+hdd/ref/
+*.mp4
+*.wav
+.DS_Store
+__pycache__/
+
+# launch drafts (social posts, video): private until published
+launch/
+.wrangler/

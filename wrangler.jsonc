@@ -1,0 +1,17 @@
+// Static site served by Cloudflare Workers: static assets, plus a Worker that runs for `/` only (worker/index.js:
+// a 302 to the visitor's language). Built by `npm run build` into dist/. Deployed by .github/workflows/ci.yml,
+// only once PUBLIC_RELEASE is set (README "Deploy"). No public preview URLs.
+{
+  "name": "spindl",
+  "compatibility_date": "2026-09-01",
+  "main": "worker/index.js",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/"],
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  },
+  "workers_dev": true,
+  "preview_urls": false
+}
