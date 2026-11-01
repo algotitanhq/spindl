@@ -145,6 +145,18 @@ const S = {
   tourOff: {en: '▶ RESUME THE TOUR', fr: '▶ REPRENDRE LA VISITE', es: '▶ REANUDAR LA VISITA'},
   turnPhone: {en: 'Turn your phone sideways for the full console', fr: 'Tournez le téléphone pour la console complète', es: 'Gira el teléfono para ver la consola completa'},
   docTitle: {en: 'Spindl · a 3.5″ 7,200 rpm hard drive, taken apart', fr: 'Spindl · un disque dur 3,5″ 7 200 tr/min, démonté', es: 'Spindl · un disco duro de 3,5″ y 7200 rpm, desmontado'},
+  // ------------------------------------------------------------ the page's header and footer (chrome.js)
+  navLabel: {en: 'Menu', fr: 'Menu', es: 'Menú'},
+  navAbout: {en: 'About', fr: 'À propos', es: 'Acerca de'},
+  navProjects: {en: 'Projects', fr: 'Projets', es: 'Proyectos'},
+  ghTitle: {en: 'Spindl on GitHub', fr: 'Spindl sur GitHub', es: 'Spindl en GitHub'},
+  footLicense: {en: 'Code under the MIT licence', fr: 'Code sous licence MIT', es: 'Código bajo licencia MIT'},
+  footCredit: {
+    en: 'A model of a typical drive, not a specific product',
+    fr: 'Le modèle d’un disque typique, pas d’un produit précis',
+    es: 'El modelo de un disco típico, no de un producto concreto',
+  },
+  footSources: {en: 'Sources', fr: 'Sources', es: 'Fuentes'},
   // ------------------------------------------------------------ the tour's captions
   cap0: {en: 'Stopped: the heads rest on the ramp, off the platters.', fr: 'À l’arrêt : les têtes reposent sur la rampe, hors des plateaux.', es: 'Parado: los cabezales descansan en la rampa, fuera de los platos.'},
   cap1: {en: 'Spin-up: the spindle reaches 7,200 rpm in 4 seconds.', fr: 'Démarrage : la broche monte à 7 200 tr/min en 4 secondes.', es: 'Arranque: el eje llega a 7200 rpm en 4 segundos.'},
