@@ -5,10 +5,11 @@ loads its heads off the ramp, reads a track, seeks across the platter with the s
 its sector, flies 3 nanometres above the surface, and parks on the ramp when the power goes. Every gauge reads the
 same model that moves the parts.
 
-**Live:** <https://spindl.storagebits.workers.dev> (English, French, Spanish).
+**Live:** <https://exploded.storagebits.workers.dev/en/spindl/> (English, French, Spanish).
 
 > Spindl now lives in [Exploded](https://github.com/algotitanhq/exploded), a collection of machines taken apart in
-> the browser: <https://exploded.storagebits.workers.dev/en/spindl/>. This repository and its site stay as they are.
+> the browser. <https://spindl.storagebits.workers.dev> answers a permanent redirect to the same machine there
+> (`worker/redirect.js`); new work on Spindl goes to Exploded.
 
 ![The drive mid-seek: the top magnet lifted off the voice coil, the target track lit, the seek profile and the coil current drawn live](static/og.png)
 

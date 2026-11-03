@@ -6,7 +6,7 @@
   "description": "Spindl: a 3.5-inch 7,200 rpm hard drive you can take apart in the browser.",
   "license": "MIT",
   "scripts": {
-    "check": "node hdd/check.mjs && node scripts/test-root-lang.mjs",
+    "check": "node hdd/check.mjs && node scripts/test-root-lang.mjs && node scripts/test-redirect.mjs",
     "build": "node scripts/build.mjs",
     "test": "npm run check && npm run build"
   },
