@@ -1,5 +1,5 @@
-// Static site served by Cloudflare Workers: static assets, plus a Worker that runs for `/` only (worker/index.js:
-// a 302 to the visitor's language). Built by `npm run build` into dist/. Deployed by .github/workflows/ci.yml,
+// Spindl moved to Exploded: a Worker that runs first for every path (worker/index.js: a 301 to the same machine
+// there). The static assets stay in the build but are no longer served. Built by `npm run build` into dist/. Deployed by .github/workflows/ci.yml,
 // only once PUBLIC_RELEASE is set (README "Deploy"). No public preview URLs.
 {
   "name": "spindl",
@@ -8,7 +8,7 @@
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
-    "run_worker_first": ["/"],
+    "run_worker_first": true,
     "not_found_handling": "404-page",
     "html_handling": "auto-trailing-slash"
   },
